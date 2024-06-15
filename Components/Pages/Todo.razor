@@ -1,0 +1,29 @@
+﻿@page "/todo"
+@using BlazorApp1.Models;
+@rendermode InteractiveServer
+@using CsvHelper;
+@using System.Globalization;
+@using System.Text;
+<ul>
+    @foreach(var data in dataSource) {
+        <li>@data.file_name <img src="@createImage(data.image_base64)"/></li>
+    }
+
+</ul>
+
+@code {
+    private IEnumerable<Blocks>? dataSource { get; set; }
+
+    protected override void OnInitialized(){
+        using (var reader = new StreamReader("blocks.csv"))
+        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture)) {
+            dataSource = csv.GetRecords<Blocks>().ToList();
+        }
+    }
+    String createImage(String inputBase64) {
+        return "data:image/png;base64," + inputBase64;
+    }
+
+
+
+}
