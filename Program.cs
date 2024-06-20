@@ -1,9 +1,5 @@
 using BlazorApp1;
 using BlazorApp1.Components;
-using BlazorApp1.Models;
-using System.Globalization;
-using System;
-
 var builder = WebApplication.CreateBuilder(args);
 
 
