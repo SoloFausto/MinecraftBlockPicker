@@ -1,0 +1,22 @@
+﻿@using BlazorApp1.Models;
+@using Stax.GetAverageImageColor.GetAverageImageColor;
+
+<div class="frame board-8843f1f0b16d">
+    @if(BlockList != null) {
+        @foreach (var currentBlock in BlockList) {
+            <div class="frame board-8843f1f0b17a" style="background: @calculateAverageColor(currentBlock.internalBlock.image_base64);">
+                <div class="shape rect Block" style="background: url(data:image/png;base64,@currentBlock.internalBlock.image_base64); background-size:50px; width: 50px; height: 50px; margin-top: 20px;">
+                    <p>@currentBlock.chance.ToString()%</p>
+                </div>
+                <p style="margin-bottom:0">@currentBlock.internalBlock.file_name</p>
+            </div>
+        }
+    }
+</div>
+@code {
+    [Parameter] public List<RandomBlocks>? BlockList { get; set; }
+    public String calculateAverageColor(String base64Image) {
+            String average = GetImageColor.AverageFromBytes(Convert.FromBase64String(base64Image));
+        return average;
+    }
+}
