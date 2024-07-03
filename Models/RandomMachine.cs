@@ -12,11 +12,10 @@
             }
             RandomBlocks randomBlock = new(block, new float()); //(what if it was only when the user changed it)
             loadedBlocks.Add(randomBlock);
-            float currentBlockDistribution = 1 / loadedBlocks.Count; 
+            float currentBlockDistribution = MathF.Round((float) 1 / loadedBlocks.Count,2); 
             foreach (var loopedBlock in loadedBlocks) { 
                 loopedBlock.chance = currentBlockDistribution;
             }
-            Console.WriteLine(block.file_name);
         }
         public void removeBlock(Blocks block) {
             float currentBlockDistribution = 1 / (loadedBlocks.Count-1);
