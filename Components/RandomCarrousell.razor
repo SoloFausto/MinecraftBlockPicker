@@ -1,35 +1,47 @@
-﻿<div class="frame board-8843f1f0b15b">
+﻿@using BlazorApp1.Models;
+<div class="frame board-8843f1f0b15b">
     <!-- rect: Background shade rectangle -->
     <div class="shape rect rectangle-8843f1f0b16b">
     </div>
     <!-- frame: Block to place carrousel -->
     <div class="frame board-8843f1f0b16c">
-        <!-- rect: crimson_planks -->
-        <div class="shape rect crimsonpl-8843f1f0b178">
+        <div style="display: flex; gap: 70px;">
+            <!-- rect: crimson_planks -->
+            <div class="shape rect crimsonpl-8843f1f0b178">
+            </div>
+            <!-- rect: end_portal_frame_top -->
+            <div class="shape rect endportal-8843f1f0b177">
+            </div>
+            <!-- rect: end_portal_frame_top -->
+            <div class="shape rect endportal-8843f1f0b176">
+            </div>
+            <!-- rect: end_portal_frame_top -->
+            <div class="shape rect endportal-8843f1f0b175">
+            </div>
         </div>
-        <!-- rect: end_portal_frame_top -->
-        <div class="shape rect endportal-8843f1f0b177">
-        </div>
-        <!-- rect: end_portal_frame_top -->
-        <div class="shape rect endportal-8843f1f0b176">
-        </div>
-        <!-- rect: end_portal_frame_top -->
-        <div class="shape rect endportal-8843f1f0b175">
-        </div>
-        <!-- rect: crimson_planks -->
-        <div class="shape rect crimsonpl-8843f1f0b174">
-        </div>
-        <!-- rect: end_portal_frame_top -->
-        <div class="shape rect endportal-8843f1f0b173">
-        </div>
-        <!-- rect: crimson_planks -->
-        <div class="shape rect crimsonpl-8843f1f0b172">
-        </div>
-        <!-- rect: end_portal_frame_top -->
-        <div class="shape rect endportal-8843f1f0b171">
-        </div>
-        <!-- rect: end_portal_frame_top -->
-        <div class="shape rect endportal-8843f1f0b170">
+       
+        <div style="display: flex; gap: 70px;">
+
+            @for (var i = 0; i < blockToPlace.Count; i++) {
+                
+                <div class="shape rect crimsonpl-8843f1f0b174" style="width:@(56-(i*16))px; height:@(56-(i*16))px; background=@(blockToPlace[i].image_base64);">
+                </div>
+
+            } 
+          @*   <!-- rect: crimson_planks --> 
+            
+            <!-- rect: end_portal_frame_top -->
+            <div class="shape rect endportal-8843f1f0b173">
+            </div>
+            <!-- rect: crimson_planks -->
+            <div class="shape rect crimsonpl-8843f1f0b172">
+            </div>
+            <!-- rect: end_portal_frame_top -->
+            <div class="shape rect endportal-8843f1f0b171">
+            </div>
+            <!-- rect: end_portal_frame_top -->
+            <div class="shape rect endportal-8843f1f0b170">
+            </div> *@
         </div>
     </div>
     <!-- frame: Board -->
@@ -68,9 +80,7 @@
     <!-- text: Block to place -->
     <div class="shape text block-to-p-8843f1f0b16f">
         <svg width="144" xmlns="http://www.w3.org/2000/svg" height="22" id="screenshot-d2950523-f033-80ea-8004-8843f1f0b16f" viewBox="2859 203 144 22" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
-            <style></style>
             <g id="shape-d2950523-f033-80ea-8004-8843f1f0b16f">
-                <defs></defs>
                 <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="2861" y="205" width="140" height="18" rx="0" ry="0">
                     <defs>
                         <pattern patternUnits="userSpaceOnUse" x="2861" y="205" width="97.36607360839844" height="20.571430206298828" id="fill-0-render-97-0">
@@ -99,4 +109,6 @@
 </div>
 @code {
     [Parameter] public RenderFragment? ChildContent{ get; set; }
+    [Parameter] public List<Blocks>? blockToPlace { get; set; }
+    [Parameter] public List<Blocks>? blockPlaced { get; set; }
 }

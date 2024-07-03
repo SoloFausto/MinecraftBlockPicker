@@ -3,16 +3,20 @@
     public class RandomMachine
     {
         private List<RandomBlocks> loadedBlocks;
-        RandomMachine(){
+        public RandomMachine(){
             loadedBlocks = new List<RandomBlocks>();
         }
         public void addBlock(Blocks block) { // what if it substracts a percentage from all previous blocks to add the new block with a 10% chance 
+            foreach(var currentBlock in loadedBlocks) { 
+                if (currentBlock.internalBlock.file_name == block.file_name) { return; }
+            }
             RandomBlocks randomBlock = new(block, new float()); //(what if it was only when the user changed it)
             loadedBlocks.Add(randomBlock);
             float currentBlockDistribution = 1 / loadedBlocks.Count; 
             foreach (var loopedBlock in loadedBlocks) { 
                 loopedBlock.chance = currentBlockDistribution;
             }
+            Console.WriteLine(block.file_name);
         }
         public void removeBlock(Blocks block) {
             float currentBlockDistribution = 1 / (loadedBlocks.Count-1);
@@ -36,6 +40,9 @@
             }
 
             return loadedBlocks[0]; // Fallback if probabilities are not properly set
+        }
+        public List<RandomBlocks> returnBlocks() {
+            return new List<RandomBlocks>(loadedBlocks);
         }
     }
 

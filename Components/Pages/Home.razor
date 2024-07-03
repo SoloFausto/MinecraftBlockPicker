@@ -56,8 +56,10 @@
         <!-- frame: Board -->
         <div class="frame board-8843f1f0b164">
             @foreach(var data in dataSource) {
-                <MenuItem BlockName="@data.file_name" ImageString="@createImage(data.image_base64)"/>
+
+                <MenuItem BlockName="@data.file_name" ImageString="@createImage(data.image_base64)" OnClickCallback="(e=>{randomMachine.addBlock(data);})"/>
             }
+
         </div>
         <!-- text: All blocks -->
         <div class="shape text all-blocks-8843f1f0b165">
@@ -85,21 +87,20 @@
         </svg>
     </div>
     <!-- frame: Board -->
-    <RandomCarrousell>
-        <PercentageView BlockList="testList"/>
+    <RandomCarrousell blockToPlace="convertRandomBlocksToBlocksList(testList)">
+        <PercentageView BlockList="randomMachine.returnBlocks()"/>
     </RandomCarrousell>
 </div>
 
 @code {
 
     private IEnumerable<Blocks>? dataSource { get; set; }
-
+    private RandomMachine randomMachine = new RandomMachine();
     protected override void OnInitialized() {
         using (var reader = new StreamReader("blocks.csv"))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture)) {
             dataSource = csv.GetRecords<Blocks>().ToList();
         }
-
     }
     String createImage(String inputBase64) {
         return "url(data:image/png;base64," + inputBase64+")";
@@ -108,6 +109,14 @@
         new RandomBlocks(new Blocks("asdf","iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAADLd0/Fckq6XTuyWzuuXTRvb2+WWDeCSSpWVlZsOx81NTUHlzqwAAAAAXRSTlMAQObYZgAAAGVJREFUeNpjSF3VDoIzGIwXMAEhawWUwRzBoNzABIIRDMIFTCBoxSDawNjAWMAIZBRAGcJIDBC0YFAGUQ1AxlYII5whFaQLxDCFqIlgMHYSBMEIBmXj0GDj0NAIhvZVqzo6OsorAHL0JGJn2sPuAAAAAElFTkSuQmCC"),50),
         new RandomBlocks(new Blocks("asdf","iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAbElEQVR42mNgGAWDABw+fPg/CIeEhPwny4Cenp7/yBhkGLJ8a2vrf5INBLkGhEGaSXbZ1KlT4a4hWfPWrVvhmmCGFBUV/Sc7gK9fv06ZAWfPnv0/efJk8g3YuHHj/6qqqgE0ABSobm5ueA0AAMBKVqcHkQM8AAAAAElFTkSuQmCC"),50)
     };
+
+    List<Blocks> convertRandomBlocksToBlocksList(List<RandomBlocks> randomBlockList) {
+        List<Blocks> blockList = new List<Blocks>();
+        foreach (var randomBlock in randomBlockList) {
+            blockList.Add(randomBlock.internalBlock);
+        }
+        return blockList;
+    }
 
 
 }
