@@ -6,42 +6,25 @@
     <!-- frame: Block to place carrousel -->
     <div class="frame board-8843f1f0b16c">
         <div style="display: flex; gap: 70px;">
-            <!-- rect: crimson_planks -->
-            <div class="shape rect crimsonpl-8843f1f0b178">
-            </div>
-            <!-- rect: end_portal_frame_top -->
-            <div class="shape rect endportal-8843f1f0b177">
-            </div>
-            <!-- rect: end_portal_frame_top -->
-            <div class="shape rect endportal-8843f1f0b176">
-            </div>
-            <!-- rect: end_portal_frame_top -->
-            <div class="shape rect endportal-8843f1f0b175">
-            </div>
+            @if (blockPlaced != null) {
+                @for (var i = 0; i < blockPlaced.Count; i++) {
+                    <div class="shape rect crimsonpl-8843f1f0b174"
+                         style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px;
+                        background-image: url(data:image/png;base64,@blockPlaced[i].image_base64); image-rendering:pixelated" />
+
+                }
+            }
         </div>
        
         <div style="display: flex; gap: 70px;">
+            @if(blockToPlace != null) {
+                @for (var i = 0; i < blockToPlace.Count; i++) {
+                    <div class="shape rect crimsonpl-8843f1f0b174"
+                         style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px; 
+                        background-image: url(data:image/png;base64,@blockToPlace[i].image_base64); image-rendering:pixelated" />
 
-            @for (var i = 0; i < blockToPlace.Count; i++) {
-                
-                <div class="shape rect crimsonpl-8843f1f0b174" style="width:@(56-(i*16))px; height:@(56-(i*16))px; background=@(blockToPlace[i].image_base64);">
-                </div>
-
-            } 
-          @*   <!-- rect: crimson_planks --> 
-            
-            <!-- rect: end_portal_frame_top -->
-            <div class="shape rect endportal-8843f1f0b173">
-            </div>
-            <!-- rect: crimson_planks -->
-            <div class="shape rect crimsonpl-8843f1f0b172">
-            </div>
-            <!-- rect: end_portal_frame_top -->
-            <div class="shape rect endportal-8843f1f0b171">
-            </div>
-            <!-- rect: end_portal_frame_top -->
-            <div class="shape rect endportal-8843f1f0b170">
-            </div> *@
+                }
+            }
         </div>
     </div>
     <!-- frame: Board -->
