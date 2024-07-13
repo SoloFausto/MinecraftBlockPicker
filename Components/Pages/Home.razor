@@ -138,8 +138,13 @@
         Console.WriteLine(e.Key);
         if(e.Key.Equals(" ") && blocksToPlace != null) {
             Blocks currentBlock = blocksToPlace[0];
-            placedBlocks.Add(currentBlock);
-            blocksToPlace.Remove(currentBlock);
+            placedBlocks = placedBlocks.Prepend(currentBlock).ToList();
+            blocksToPlace.RemoveAt(0);
+            blocksToPlace.Add(randomMachine.selectRandomBlock().internalBlock);
+            foreach(var it in placedBlocks) {
+                 Console.Write("[" + it.file_name + "]");
+            }
+            Console.WriteLine("A");
 
 
         }

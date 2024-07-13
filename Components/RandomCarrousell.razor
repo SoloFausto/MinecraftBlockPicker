@@ -3,92 +3,36 @@
     <!-- rect: Background shade rectangle -->
     <div class="shape rect rectangle-8843f1f0b16b">
     </div>
-    <!-- frame: Block to place carrousel -->
-    <div class="frame board-8843f1f0b16c">
-        <div style="display: flex; gap: 70px;">
-            @if (blockPlaced != null) {
-                @for (var i = 0; i < blockPlaced.Count; i++) {
-                    <div class="shape rect crimsonpl-8843f1f0b174"
-                         style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px;
-                        background-image: url(data:image/png;base64,@blockPlaced[i].image_base64); image-rendering:pixelated" />
 
-                }
-            }
-        </div>
-       
-        <div style="display: flex; gap: 70px;">
-            @if(blockToPlace != null) {
-                @for (var i = 0; i < blockToPlace.Count; i++) {
-                    <div class="shape rect crimsonpl-8843f1f0b174"
-                         style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px; 
-                        background-image: url(data:image/png;base64,@blockToPlace[i].image_base64); image-rendering:pixelated" />
+        <div class="frame board-8843f1f0b16c">
+            <p>Block To Place</p>
+        <div style="display:flex; flex-direction:row; gap: 84px;">
+                    <div style="display: flex; gap: 70px; flex-direction: row-reverse;">
+                        @if (blockPlaced != null) {
+                            @for (var i = 0; i < blockPlaced.Count; i++) {
+                                if (56 - (i * 16) > 0) {
+                                    <div class="shape rect crimsonpl-8843f1f0b174"
+                                         style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px;
+                                    background-image: url(data:image/png;base64,@blockPlaced[i].image_base64); image-rendering:pixelated" />
+                                }
+                            }
+                        }
+                    </div>
 
-                }
-            }
+                    <div style="display: flex; gap: 70px;">
+                        @if (blockToPlace != null) {
+                            @for (var i = 0; i < blockToPlace.Count; i++) {
+                                <div class="shape rect crimsonpl-8843f1f0b174"
+                                     style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px;
+                                background-image: url(data:image/png;base64,@blockToPlace[i].image_base64); image-rendering:pixelated" />
+
+                            }
+                        }
+                    </div>
+            </div>
+            <p>aaa</p>
         </div>
-    </div>
-    <!-- frame: Board -->
     @ChildContent 
-    <!-- text: Crimson Planks -->
-    <div class="shape text crimson-pl-8843f1f0b16e">
-        <svg width="135" xmlns="http://www.w3.org/2000/svg" height="29" id="screenshot-d2950523-f033-80ea-8004-8843f1f0b16e" viewBox="2864 315 135 29" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
-            <style></style>
-            <g id="shape-d2950523-f033-80ea-8004-8843f1f0b16e">
-                <defs></defs>
-                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="2866" y="317" width="131" height="25" rx="0" ry="0">
-                    <defs>
-                        <pattern patternUnits="userSpaceOnUse" x="2866" y="317" width="130.0803680419922" height="25.71428871154785" id="fill-0-render-96-0">
-                            <g>
-                                <rect width="130.0803680419922" height="25.71428871154785" style="fill:#ffffff;fill-opacity:1"></rect>
-                            </g>
-                        </pattern>
-                    </defs>
-                    <g class="fills" id="fills-d2950523-f033-80ea-8004-8843f1f0b16e"><text x="2866" y="341.571431517601" dominant-baseline="ideographic" textLength="130.0803680419922" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:sourcesanspro;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:20px;text-decoration:none solid rgb(255, 255, 255);direction:ltr;fill:#ffffff;fill-opacity:1">Crimson Planks</text></g>
-                    <g id="strokes-d2950523-f033-80ea-8004-8843f1f0b16e" class="strokes">
-                        <g class="outer-stroke-shape">
-                            <defs>
-                                <mask id="outer-stroke-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0" x="2864.585786437627" y="314.44292924368006" width="132.90879516673837" height="28.542715836294043" maskUnits="userSpaceOnUse">
-                                    <use href="#stroke-shape-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0" style="fill:none;stroke:white;stroke-width:2"></use>
-                                    <use href="#stroke-shape-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0" style="fill:black;stroke:none"></use>
-                                </mask><text x="2866" y="341.571431517601" dominant-baseline="ideographic" textLength="130.0803680419922" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:sourcesanspro;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:20px;text-decoration:none solid rgb(255, 255, 255);direction:ltr" id="stroke-shape-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0">Crimson Planks</text>
-                            </defs>
-                            <use href="#stroke-shape-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0" mask="url(#outer-stroke-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0)" style="text-transform:none;font-family:sourcesanspro;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:20px;text-decoration:none solid rgb(255, 255, 255);direction:ltr;fill:none;stroke-width:2;stroke:#aba09c;stroke-opacity:1"></use>
-                            <use href="#stroke-shape-render-96-0-d2950523-f033-80ea-8004-8843f1f0b16e-0" style="text-transform:none;font-family:sourcesanspro;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:20px;text-decoration:none solid rgb(255, 255, 255);direction:ltr;fill:none;fill-opacity:none;stroke-width:1;stroke:none;stroke-opacity:1"></use>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </svg>
-    </div>
-    <!-- text: Block to place -->
-    <div class="shape text block-to-p-8843f1f0b16f">
-        <svg width="144" xmlns="http://www.w3.org/2000/svg" height="22" id="screenshot-d2950523-f033-80ea-8004-8843f1f0b16f" viewBox="2859 203 144 22" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
-            <g id="shape-d2950523-f033-80ea-8004-8843f1f0b16f">
-                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="2861" y="205" width="140" height="18" rx="0" ry="0">
-                    <defs>
-                        <pattern patternUnits="userSpaceOnUse" x="2861" y="205" width="97.36607360839844" height="20.571430206298828" id="fill-0-render-97-0">
-                            <g>
-                                <rect width="97.36607360839844" height="20.571430206298828" style="fill:#ffffff;fill-opacity:1"></rect>
-                            </g>
-                        </pattern>
-                    </defs>
-                    <g class="fills" id="fills-d2950523-f033-80ea-8004-8843f1f0b16f"><text x="2882.3125" y="223.85714423656464" dominant-baseline="ideographic" textLength="97.36607360839844" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Noto Sans&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:15px;text-decoration:underline solid rgb(255, 255, 255);direction:ltr;fill:#ffffff;fill-opacity:1">Block to place</text></g>
-                    <g id="strokes-d2950523-f033-80ea-8004-8843f1f0b16f" class="strokes">
-                        <g class="outer-stroke-shape">
-                            <defs>
-                                <mask id="outer-stroke-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0" x="2880.898286437627" y="201.8715004678927" width="100.19450073314462" height="23.39985733104502" maskUnits="userSpaceOnUse">
-                                    <use href="#stroke-shape-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0" style="fill:none;stroke:white;stroke-width:2"></use>
-                                    <use href="#stroke-shape-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0" style="fill:black;stroke:none"></use>
-                                </mask><text x="2882.3125" y="223.85714423656464" dominant-baseline="ideographic" textLength="97.36607360839844" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Noto Sans&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:15px;text-decoration:underline solid rgb(255, 255, 255);direction:ltr" id="stroke-shape-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0">Block to place</text>
-                            </defs>
-                            <use href="#stroke-shape-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0" mask="url(#outer-stroke-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0)" style="text-transform:none;font-family:&quot;Noto Sans&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:15px;text-decoration:underline solid rgb(255, 255, 255);direction:ltr;fill:none;stroke-width:2;stroke:#aba09c;stroke-opacity:1"></use>
-                            <use href="#stroke-shape-render-97-0-d2950523-f033-80ea-8004-8843f1f0b16f-0" style="text-transform:none;font-family:&quot;Noto Sans&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:15px;text-decoration:underline solid rgb(255, 255, 255);direction:ltr;fill:none;fill-opacity:none;stroke-width:1;stroke:none;stroke-opacity:1"></use>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </svg>
-    </div>
 </div>
 @code {
     [Parameter] public RenderFragment? ChildContent{ get; set; }
