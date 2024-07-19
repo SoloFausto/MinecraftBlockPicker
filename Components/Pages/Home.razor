@@ -6,44 +6,24 @@
 @using System.Text;
 <PageTitle>Home</PageTitle>
 
-<div class="frame board-8843f1f0b157">
+<div class="frame mainBoard">
     <!-- frame: Board -->
-    <div class="frame board-8843f1f0b158" tabindex="0" @onkeypress="advanceCarrousel" @ref="mainBoard">
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-8843f1f0b15c">
-        </div>
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-88444749cad8">
-        </div>
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-8843f1f0b15e">
-        </div>
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-884508826e10">
-        </div>
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-884508826e11">
-        </div>
-        <!-- text: Row Mode -->
-        <div class="shape text row-mode-8843f1f0b160">
-            <div class="text-node-html" id="html-text-node-d2950523-f033-80ea-8004-8843f1f0b160" data-x="2024.9999999999998" data-y="12">
-                <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
-                    <div class="paragraph-set root-0-paragraph-set-0">
-                        <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="auto"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(48, 211, 79, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:break-spaces;text-rendering:geometricPrecision;caret-color:rgba(48, 211, 79, 1);text-decoration:none;--font-id:gfont-noto-sans;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#30d34f&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-size:45px;font-family:&quot;Noto Sans&quot;;font-style:normal;font-weight:400">Row Mode</span></p>
-                    </div>
-                </div>
+    <div class="frame header" >
+
+        <!-- Row mode -->
+        <div class="headerButton headerButtonRowMode">
+            <div class="shape rect headerDividerBar" style="background: #30D34F;">
             </div>
+            <p>Row Mode</p>
         </div>
-        <!-- text: Grid mode -->
-        <div class="shape text grid-mode-8843f1f0b161">
-            <div class="text-node-html" id="html-text-node-d2950523-f033-80ea-8004-8843f1f0b161" data-x="2283" data-y="12.999999999999996">
-                <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
-                    <div class="paragraph-set root-0-paragraph-set-0">
-                        <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="auto"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(100, 100, 100, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:break-spaces;text-rendering:geometricPrecision;caret-color:rgba(100, 100, 100, 1);text-decoration:none;--font-id:gfont-noto-sans;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#646464&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-size:45px;font-family:&quot;Noto Sans&quot;;font-style:normal;font-weight:400">Grid mode</span></p>
-                    </div>
-                </div>
+
+        <!-- Grid mode -->
+        <div class="headerButton" style="color: #646464;">
+            <div class="shape rect headerDividerBar" style="background: #646464;">
             </div>
+            <p>Grid Mode</p>
         </div>
+        
     </div>
     <!-- frame: Board -->
     <div class="frame board-8843f1f0b159">
@@ -87,9 +67,12 @@
         </svg>
     </div>
     <!-- frame: Board -->
-    <RandomCarrousell blockToPlace="blocksToPlace" blockPlaced="placedBlocks" >
-        <PercentageView BlockList="randomMachine.returnBlocks()"/>
-    </RandomCarrousell>
+    <div tabindex="0" @onkeypress="advanceCarrousel" @ref="pageCarrousel">
+        <RandomCarrousell blockToPlace="blocksToPlace" blockPlaced="placedBlocks">
+            <PercentageView BlockList="randomMachine.returnBlocks()" />
+        </RandomCarrousell>
+    </div>
+
 </div>
 
 @code {
@@ -98,14 +81,13 @@
     private RandomMachine randomMachine = new RandomMachine();
     private List<Blocks>? blocksToPlace = new List<Blocks>();
     private List<Blocks>? placedBlocks = new List<Blocks>();
-    private ElementReference mainBoard;
-    private ElementReference asd;
+    private ElementReference pageCarrousel;
     private string pressedKey;
 
 
     protected override async Task OnAfterRenderAsync(bool firstRender) {
         if (firstRender) {
-            await mainBoard.FocusAsync();
+            await pageCarrousel.FocusAsync();
         }
     }
     protected override void OnInitialized() {
