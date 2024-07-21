@@ -1,12 +1,8 @@
 ﻿@using BlazorApp1.Models;
 <div class="frame board-8843f1f0b15b">
-    <!-- rect: Background shade rectangle -->
-    <div class="shape rect rectangle-8843f1f0b16b">
-    </div>
-
         <div class="frame board-8843f1f0b16c">
             <p>Block To Place</p>
-        <div style="display:flex; flex-direction:row; gap: 84px;">
+            <div style="display:flex; flex-direction:row; gap: 84px;">
                     <div style="display: flex; gap: 70px; flex-direction: row-reverse;">
                         @if (blockPlaced != null) {
                             @for (var i = 0; i < blockPlaced.Count; i++) {
@@ -30,13 +26,15 @@
                         }
                     </div>
             </div>
-            <p>aaa</p>
+            @if (blockToPlace.Count > 0) {
+                <p>@blockToPlace[0].file_name</p>
+            }
+            
         </div>
-    @ChildContent 
+        @ChildContent 
 </div>
 @code {
     [Parameter] public RenderFragment? ChildContent{ get; set; }
     [Parameter] public List<Blocks>? blockToPlace { get; set; }
     [Parameter] public List<Blocks>? blockPlaced { get; set; }
-
 }

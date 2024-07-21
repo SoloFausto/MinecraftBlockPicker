@@ -8,7 +8,7 @@
 
 <div class="frame mainBoard">
     <!-- frame: Board -->
-    <div class="frame header" >
+    <div class="frame header">
 
         <!-- Row mode -->
         <div class="headerButton headerButtonRowMode">
@@ -26,51 +26,35 @@
         
     </div>
     <!-- frame: Board -->
-    <div class="frame board-8843f1f0b159">
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-8843f1f0b162">
-        </div>
-        <!-- rect: Rectangle -->
-        <div class="shape rect rectangle-8843f1f0b163" >
-        </div>
-        <!-- frame: Board -->
-        <div class="frame board-8843f1f0b164">
-            @foreach(var data in dataSource) {
-
-                <MenuItem BlockName="@data.file_name" ImageString="@createImage(data.image_base64)" OnClickCallback="(e=>{randomMachine.addBlock(data); recalculateBlockList(); })"/>
-            }
-
-        </div>
-        <!-- text: All blocks -->
-        <div class="shape text all-blocks-8843f1f0b165">
-            <div class="text-node-html" id="html-text-node-d2950523-f033-80ea-8004-8843f1f0b165" data-x="2006" data-y="552">
-                <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
-                    <div class="paragraph-set root-0-paragraph-set-0">
-                        <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="auto"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(237, 229, 226, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:pre;text-rendering:geometricPrecision;caret-color:rgba(237, 229, 226, 1);text-decoration:none;--font-id:gfont-noto-sans;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#ede5e2&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-size:52px;font-family:&quot;Noto Sans&quot;;font-style:normal;font-weight:400">All blocks</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- group: light_mode_24dp_FILL0_wght400_GRAD0_opsz24 -->
-    <div class="shape group lightmode-8843f1f0b15a">
-        <svg width="45" xmlns="http://www.w3.org/2000/svg" height="45" id="screenshot-d2950523-f033-80ea-8004-8843f1f0b15a" viewBox="3799 13 45 45" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
-            <g id="shape-d2950523-f033-80ea-8004-8843f1f0b15a" style="fill:#000000" height="24" width="24" rx="0" ry="0">
-                <defs></defs>
-                <g id="shape-d2950523-f033-80ea-8004-8843f1f0b16a">
-                    <defs></defs>
-                    <g class="fills" id="fills-d2950523-f033-80ea-8004-8843f1f0b16a">
-                        <path d="M3821.500,41.125C3823.063,41.125,3824.391,40.578,3825.484,39.484C3826.578,38.391,3827.125,37.062,3827.125,35.500C3827.125,33.937,3826.578,32.609,3825.484,31.516C3824.391,30.422,3823.063,29.875,3821.500,29.875C3819.938,29.875,3818.609,30.422,3817.516,31.516C3816.422,32.609,3815.875,33.937,3815.875,35.500C3815.875,37.062,3816.422,38.391,3817.516,39.484C3818.609,40.578,3819.938,41.125,3821.500,41.125ZZM3821.500,44.875C3818.906,44.875,3816.695,43.961,3814.867,42.133C3813.039,40.305,3812.125,38.094,3812.125,35.500C3812.125,32.906,3813.039,30.695,3814.867,28.867C3816.695,27.039,3818.906,26.125,3821.500,26.125C3824.094,26.125,3826.305,27.039,3828.133,28.867C3829.961,30.695,3830.875,32.906,3830.875,35.500C3830.875,38.094,3829.961,40.305,3828.133,42.133C3826.305,43.961,3824.094,44.875,3821.500,44.875ZZM3808.375,37.375L3800.875,37.375L3800.875,33.625L3808.375,33.625L3808.375,37.375ZZM3842.125,37.375L3834.625,37.375L3834.625,33.625L3842.125,33.625L3842.125,37.375ZZM3819.625,22.375L3819.625,14.875L3823.375,14.875L3823.375,22.375L3819.625,22.375ZZM3819.625,56.125L3819.625,48.625L3823.375,48.625L3823.375,56.125L3819.625,56.125ZZM3811.000,27.531L3806.266,22.984L3808.938,20.219L3813.438,24.906L3811.000,27.531ZZM3834.063,50.781L3829.516,46.047L3832.000,43.469L3836.734,48.016L3834.063,50.781ZZM3829.469,25.000L3834.016,20.266L3836.781,22.938L3832.094,27.437L3829.469,25.000ZZM3806.219,48.062L3810.953,43.516L3813.531,46.000L3808.984,50.734L3806.219,48.062ZZM3821.500,35.500Z" style="fill:#e8eaed"></path>
-                    </g>
-                </g>
-            </g>
-        </svg>
-    </div>
-    <!-- frame: Board -->
-    <div tabindex="0" @onkeypress="advanceCarrousel" @ref="pageCarrousel">
+    <div tabindex="0" @onkeypress="advanceCarrousel" @ref="pageCarrousel" style="z-index: 2;">
         <RandomCarrousell blockToPlace="blocksToPlace" blockPlaced="placedBlocks">
             <PercentageView BlockList="randomMachine.returnBlocks()" />
         </RandomCarrousell>
+    </div>
+    <!-- frame: Menu picker -->
+    <div class="frame BlockSelector" style="z-index:0;">
+        <!-- rect: Rectangle -->
+        <div class="shape rect searchMenuHeader">
+            <div class="shape text all-blocks-8843f1f0b165">
+                <div class="text-node-html" id="html-text-node-d2950523-f033-80ea-8004-8843f1f0b165" data-x="2006" data-y="552">
+                    <div class="root rich-text root-0" style="display:flex;white-space:break-spaces;align-items:flex-start" xmlns="http://www.w3.org/1999/xhtml">
+                        <div class="paragraph-set root-0-paragraph-set-0">
+                            <p class="paragraph root-0-paragraph-set-0-paragraph-0" dir="auto"><span class="text-node root-0-paragraph-set-0-paragraph-0-text-0" style="color:rgba(237, 229, 226, 1);text-transform:none;line-break:auto;overflow-wrap:initial;white-space:pre;text-rendering:geometricPrecision;caret-color:rgba(237, 229, 226, 1);text-decoration:none;--font-id:gfont-noto-sans;--fills:[[&quot;^ &quot;,&quot;~:fill-color&quot;,&quot;#ede5e2&quot;,&quot;~:fill-opacity&quot;,1]];letter-spacing:0px;font-size:52px;font-family:&quot;Noto Sans&quot;;font-style:normal;font-weight:400">All blocks</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shape rect filterBar">
+            </div>
+        </div>
+        <!-- frame: Board -->
+        <div class="frame blockList">
+            @foreach (var data in dataSource) {
+
+                <MenuItem BlockName="@data.file_name" ImageString="@createImage(data.image_base64)" OnClickCallback="(e=>{randomMachine.addBlock(data); recalculateBlockList(); })" />
+            }
+
+        </div>
     </div>
 
 </div>
@@ -123,10 +107,6 @@
             placedBlocks = placedBlocks.Prepend(currentBlock).ToList();
             blocksToPlace.RemoveAt(0);
             blocksToPlace.Add(randomMachine.selectRandomBlock().internalBlock);
-            foreach(var it in placedBlocks) {
-                 Console.Write("[" + it.file_name + "]");
-            }
-            Console.WriteLine("A");
 
 
         }
