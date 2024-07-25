@@ -4,6 +4,7 @@
 @using CsvHelper;
 @using System.Globalization;
 @using System.Text;
+@using FuzzySharp;
 <PageTitle>Home</PageTitle>
 
 <div class="frame mainBoard">
@@ -45,12 +46,13 @@
                 </div>
             </div>
             <div class="shape rect filterBar">
+                <input @bind:event="oninput" @bind:get="currentSearch" @bind:set="blockSearchFieldEvent" />
             </div>
         </div>
         <!-- frame: Board -->
         <div class="frame blockList">
-            @foreach (var data in dataSource) {
-
+            
+            @foreach (var data in availableBlocks) {
                 <MenuItem BlockName="@data.file_name" ImageString="@createImage(data.image_base64)" OnClickCallback="(e=>{randomMachine.addBlock(data); recalculateBlockList(); })" />
             }
 
@@ -61,13 +63,14 @@
 
 @code {
 
-    private IEnumerable<Blocks>? dataSource { get; set; }
+    private IEnumerable<Blocks>? availableBlocks { get; set; }
+    private IEnumerable<Blocks>? allBlocks { get; set; }
     private RandomMachine randomMachine = new RandomMachine();
     private List<Blocks>? blocksToPlace = new List<Blocks>();
     private List<Blocks>? placedBlocks = new List<Blocks>();
     private ElementReference pageCarrousel;
     private string pressedKey;
-
+    private string currentSearch;
 
     protected override async Task OnAfterRenderAsync(bool firstRender) {
         if (firstRender) {
@@ -77,7 +80,8 @@
     protected override void OnInitialized() {
         using (var reader = new StreamReader("blocks.csv"))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture)) {
-            dataSource = csv.GetRecords<Blocks>().ToList();
+            allBlocks = csv.GetRecords<Blocks>().ToList();
+            availableBlocks = allBlocks;
         }
     }
 
@@ -85,13 +89,6 @@
 
     String createImage(String inputBase64) {
         return "url(data:image/png;base64," + inputBase64+")";
-    }
-    List<Blocks> convertRandomBlocksToBlocksList(List<RandomBlocks> randomBlockList) {
-        List<Blocks> blockList = new List<Blocks>();
-        foreach (var randomBlock in randomBlockList) {
-            blockList.Add(randomBlock.internalBlock);
-        }
-        return blockList;
     }
     void recalculateBlockList() {
         blocksToPlace = new List<Blocks>();
@@ -102,7 +99,7 @@
 
     void advanceCarrousel(KeyboardEventArgs e) {
         Console.WriteLine(e.Key);
-        if(e.Key.Equals(" ") && blocksToPlace != null) {
+        if(e.Key.Equals(" ") && blocksToPlace.Count != 0) {
             Blocks currentBlock = blocksToPlace[0];
             placedBlocks = placedBlocks.Prepend(currentBlock).ToList();
             blocksToPlace.RemoveAt(0);
@@ -112,5 +109,24 @@
         }
 
     }
+    void blockSearchFieldEvent(string value) {
+        currentSearch = value;
+        searchForBlock(value);
+        
+    }
+    void searchForBlock(string blockQuery) {
+        if (blockQuery.Length == 0) {
+            availableBlocks = allBlocks;
+            return;
+        }
+        List<String> blockNames = allBlocks.Select(block => block.file_name).ToList();
+        var results = Process.ExtractSorted(blockQuery, blockNames, null, null, 10);
+        List<String> resultNames = results.Select(b => b.Value).ToList();
+        List<Blocks> resultBlocks = new List<Blocks>(); 
+        foreach(var result in resultNames) {
+            resultBlocks.Add(allBlocks.Single(obj => obj.file_name == result));
+        }
+        availableBlocks = resultBlocks;
 
+    }
 }
