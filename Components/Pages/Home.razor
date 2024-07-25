@@ -45,9 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class="shape rect filterBar">
-                <input @bind:event="oninput" @bind:get="currentSearch" @bind:set="blockSearchFieldEvent" />
-            </div>
+            <input @bind:event="oninput" @bind:get="currentSearch" @bind:set="blockSearchFieldEvent" class="filterBar"/>
         </div>
         <!-- frame: Board -->
         <div class="frame blockList">
@@ -120,7 +118,7 @@
             return;
         }
         List<String> blockNames = allBlocks.Select(block => block.file_name).ToList();
-        var results = Process.ExtractSorted(blockQuery, blockNames, null, null, 10);
+        var results = Process.ExtractSorted(blockQuery, blockNames, null, null, 50);
         List<String> resultNames = results.Select(b => b.Value).ToList();
         List<Blocks> resultBlocks = new List<Blocks>(); 
         foreach(var result in resultNames) {
