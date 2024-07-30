@@ -4,7 +4,7 @@
 <div class="frame board-8843f1f0b16d">
     @if(BlockList != null) {
         @foreach (var currentBlock in BlockList) {
-            <div class="frame board-8843f1f0b17a" style="background: @calculateAverageColor(currentBlock.internalBlock.image_base64);">
+            <div class="frame board-8843f1f0b17a" style="background: @calculateAverageColor(currentBlock.internalBlock.image_base64);" @onclick=" () => { percentageOnClick(currentBlock.internalBlock);}">
                 <div class="shape rect Block" style="background: url(data:image/png;base64,@currentBlock.internalBlock.image_base64); background-size:50px; width: 50px; height: 50px; margin-top: 20px;">
                     <p>@(currentBlock.chance*100)%</p>
                 </div>
@@ -14,9 +14,16 @@
     }
 </div>
 @code {
+    [Parameter]
+    public EventCallback<Blocks> OnClickCallback { get; set; }
     [Parameter] public List<RandomBlocks>? BlockList { get; set; }
     public String calculateAverageColor(String base64Image) {
-            String average = GetImageColor.AverageFromBytes(Convert.FromBase64String(base64Image));
+        String average = GetImageColor.AverageFromBytes(Convert.FromBase64String(base64Image));
         return average;
     }
+    private async Task percentageOnClick(Blocks selectedBlock) {
+        OnClickCallback.InvokeAsync(selectedBlock);
+    }
+
+    
 }

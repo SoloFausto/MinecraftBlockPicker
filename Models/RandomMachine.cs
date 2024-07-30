@@ -18,8 +18,12 @@
             }
         }
         public void removeBlock(Blocks block) {
-            float currentBlockDistribution = 1 / (loadedBlocks.Count-1);
-            foreach (var loopedBlock in loadedBlocks) {
+            if(loadedBlocks.Count <= 1) {
+                loadedBlocks.Clear();
+                return;
+            }
+            float currentBlockDistribution = MathF.Round((float)1 / (loadedBlocks.Count-1), 2);
+            foreach (var loopedBlock in loadedBlocks.ToList()) {
                 if (loopedBlock.internalBlock.file_name == block.file_name) {
                     loadedBlocks.Remove(loopedBlock);
                 }
@@ -29,6 +33,9 @@
             }
         }
         public RandomBlocks selectRandomBlock() {
+            if (loadedBlocks.Count < 1) {
+                return null;
+            }
             float totalProbability = loadedBlocks.Sum(randomBlock => randomBlock.chance);
             double randomValue = new Random().NextDouble() * totalProbability;
             foreach (var randomBlock in loadedBlocks) {
