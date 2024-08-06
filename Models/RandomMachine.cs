@@ -23,13 +23,14 @@ namespace BlazorApp1.Models
         }
         public void removeBlock(Blocks block) {
             if (loadedBlocks.Count == 1 && loadedBlocks[0].weight == 1) { loadedBlocks.Clear(); }
-            foreach (var loopedBlock in loadedBlocks) {
-                if (loopedBlock.internalBlock.file_name == block.file_name) {
-                    if (loopedBlock.weight.Equals(1)) {
-                        loadedBlocks.Remove(loopedBlock);
+
+            for (var i = 0; i < loadedBlocks.Count; i++) {
+                if (loadedBlocks[i].internalBlock.file_name == block.file_name) {
+                    if (loadedBlocks[i].weight.Equals(1)) {
+                        loadedBlocks.Remove(loadedBlocks[i]);
                     }
                     else {
-                        loopedBlock.weight -= 1;
+                        loadedBlocks[i].weight -= 1;
                     }
                 }
                 
