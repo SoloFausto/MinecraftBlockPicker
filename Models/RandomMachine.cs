@@ -9,7 +9,6 @@ namespace BlazorApp1.Models
             loadedBlocks = new List<RandomBlocks>();
         }
         public void addBlock(Blocks block) {
-            if(loadedBlocks.Count == 8) { return;  }
             foreach(var currentBlock in loadedBlocks) { 
                 if (currentBlock.internalBlock.file_name == block.file_name ) {
                     if (currentBlock.weight < 5) {
@@ -18,6 +17,7 @@ namespace BlazorApp1.Models
                     return;
                 }
             }
+            if (loadedBlocks.Count == 8) { return; }
             RandomBlocks randomBlock = new(block,1);
             loadedBlocks.Add(randomBlock);
         }
