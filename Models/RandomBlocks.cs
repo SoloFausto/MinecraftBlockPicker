@@ -3,10 +3,10 @@
     public class RandomBlocks
     {
         public readonly Blocks? internalBlock;
-        public float chance { get; set; }
-        public RandomBlocks(Blocks? internalBlock, float chance) {
+        public int weight { get; set; }
+        public RandomBlocks(Blocks? internalBlock, int weight) {
             this.internalBlock = internalBlock;
-            this.chance = chance;
+            this.weight = weight;
         }
     }
 }
