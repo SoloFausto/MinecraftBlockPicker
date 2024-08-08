@@ -1,0 +1,12 @@
+﻿@using BlazorApp1.Models;
+<div class="frame board-8843f1f0b15b">
+    <div class="frame board-8843f1f0b16c">
+        <img src="#" alt="Alternate Text" />
+    </div>
+    @ChildContent
+</div>
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public List<Blocks>? blockToPlace { get; set; }
+    [Parameter] public List<Blocks>? blockPlaced { get; set; }
+}

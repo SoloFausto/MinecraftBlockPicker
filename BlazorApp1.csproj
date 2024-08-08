@@ -30,4 +30,10 @@
     <None Include="Components\MenuItem.razor" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Pages\GridMode.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>
