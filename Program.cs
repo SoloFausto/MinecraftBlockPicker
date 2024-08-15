@@ -1,5 +1,5 @@
-using BlazorApp1;
-using BlazorApp1.Components;
+using MinecraftBlockPicker;
+using MinecraftBlockPicker.Components;
 var builder = WebApplication.CreateBuilder(args);
 
 

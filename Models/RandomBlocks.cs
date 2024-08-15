@@ -1,4 +1,4 @@
-﻿namespace BlazorApp1.Models
+﻿namespace MinecraftBlockPicker.Models
 {
     public class RandomBlocks
     {
