@@ -1,40 +1,22 @@
 ﻿@using BlazorApp1.Models;
 <div class="frame board-8843f1f0b15b">
-        <div class="frame board-8843f1f0b16c">
-            <p>Block To Place</p>
+        <div class="frame CarrousellBackGround">
+            <p style="margin-top: 0px;">Block To Place</p>
             <div style="display:flex; flex-direction:row; gap: 84px;">
                     <div style="display: flex; gap: 70px; flex-direction: row-reverse;">
-                        @if (blockPlaced != null) {
-                            @for (var i = 0; i < blockPlaced.Count; i++) {
-                                if (56 - (i * 16) > 0) {
-                                    <div class="shape rect crimsonpl-8843f1f0b174"
-                                         style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px;
-                                    background-image: url(data:image/png;base64,@blockPlaced[i].image_base64); image-rendering:pixelated" />
-                                }
+                        @if (BlockList != null) {
+                            @for (var i = 0; i < BlockList.Count; i++) {
+                                    <div class="shape rect CarrousellBlock" style=" background-image: url(data:image/png;base64,@BlockList[i].image_base64);" />
                             }
                         }
                     </div>
 
-                    <div style="display: flex; gap: 70px;">
-                        @if (blockToPlace != null) {
-                            @for (var i = 0; i < blockToPlace.Count; i++) {
-                                <div class="shape rect crimsonpl-8843f1f0b174"
-                                     style="width:@(56-(i*16))px; height:@(56-(i*16))px;background-size:@(56-(i*16))px;
-                                background-image: url(data:image/png;base64,@blockToPlace[i].image_base64); image-rendering:pixelated" />
-
-                            }
-                        }
-                    </div>
             </div>
-            @if (blockToPlace.Count > 0) {
-                <p>@blockToPlace[0].file_name</p>
-            }
             
         </div>
         @ChildContent 
 </div>
 @code {
     [Parameter] public RenderFragment? ChildContent{ get; set; }
-    [Parameter] public List<Blocks>? blockToPlace { get; set; }
-    [Parameter] public List<Blocks>? blockPlaced { get; set; }
+    [Parameter] public List<Blocks>? BlockList { get; set; }
 }

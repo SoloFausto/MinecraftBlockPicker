@@ -17,18 +17,11 @@
             </div>
             <p>Row Mode</p>
         </div>
-
-        <!-- Grid mode -->
-        <div class="headerButton" style="color: #646464;">
-            <div class="shape rect headerDividerBar" style="background: #646464;">
-            </div>
-            <p>Grid Mode</p>
-        </div>
         
     </div>
     <!-- frame: Board -->
-    <div tabindex="0" @onkeypress="advanceCarrousel" @ref="pageCarrousel" style="z-index: 2;">
-        <RandomCarrousell blockToPlace="blocksToPlace" blockPlaced="placedBlocks">
+    <div tabindex="0" @onkeypress="recalculateBlockList" @ref="pageCarrousel" style="z-index: 2;">
+        <RandomCarrousell BlockList="blockList">
             <PercentageView BlockList="randomMachine.returnBlocks()" OnClickCallback="(clickedBlock)=>{randomMachine.removeBlock(clickedBlock); recalculateBlockList(); }" />
         </RandomCarrousell>
     </div>
@@ -36,8 +29,12 @@
     <div class="frame BlockSelector" style="z-index:0;">
         <!-- rect: Rectangle -->
         <div class="shape rect searchMenuHeader">
-            <p style="height: 63px; color: rgba(237, 229, 226, 1); font-size: 52px;">All Blocks</p
-            <input @bind:event="oninput" @bind:get="currentSearch" @bind:set="blockSearchFieldEvent" class="filterBar"/>
+            <p style="height: 63px; color: rgba(237, 229, 226, 1); font-size: 52px;">All Blocks</p>
+            <div style="display: flex;align-items: center;">
+                <span class="material-symbols-outlined" style="color:rgba(237, 229, 226, 1); font-size:35px;">search</span>
+                <input class="filterBar">
+            </div>
+
         </div>
         <!-- frame: Board -->
         <div class="frame blockList">
@@ -56,8 +53,7 @@
     private IEnumerable<Blocks>? availableBlocks { get; set; }
     private IEnumerable<Blocks>? allBlocks { get; set; }
     private RandomMachine randomMachine = new RandomMachine();
-    private List<Blocks>? blocksToPlace = new List<Blocks>();
-    private List<Blocks>? placedBlocks = new List<Blocks>();
+    private List<Blocks>? blockList = new List<Blocks>();
     private ElementReference pageCarrousel;
     private string pressedKey;
     private string currentSearch;
@@ -81,25 +77,15 @@
         return "url(data:image/png;base64," + inputBase64+")";
     }
     void recalculateBlockList() {
-        blocksToPlace = new List<Blocks>();
-        for(int i = 0; i < 5; i++) {
+        blockList.Clear();
+        for(int i = 0; i < 10; i++) {
             RandomBlocks? selectedBlock = randomMachine.selectRandomBlock();
             if(selectedBlock != null) {
-                blocksToPlace.Add(selectedBlock.internalBlock);
+                blockList.Add(selectedBlock.internalBlock);
             }
         }
     }
 
-    void advanceCarrousel(KeyboardEventArgs e) {
-        Console.WriteLine(e.Key);
-        if(e.Key.Equals(" ") && blocksToPlace.Count != 0) {
-            Blocks currentBlock = blocksToPlace[0];
-            placedBlocks = placedBlocks.Prepend(currentBlock).ToList();
-            blocksToPlace.RemoveAt(0);
-            blocksToPlace.Add(randomMachine.selectRandomBlock().internalBlock);
-        }
-
-    }
     void blockSearchFieldEvent(string value) {
         currentSearch = value;
         searchForBlock(value);

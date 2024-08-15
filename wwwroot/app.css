@@ -32,8 +32,8 @@ body {
     background: url("bg.webp") no-repeat center center / cover;
     overflow: hidden;
     z-index: 0;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Board */
@@ -94,7 +94,8 @@ body {
     padding: 15px 0px 15px 0px;
     flex-direction: column;
     flex-wrap: nowrap;
-    flex:1;
+    flex: 1;
+    image-rendering:pixelated;
 }
 
 /* Board */
@@ -106,10 +107,10 @@ body {
 }
 
 /* Board */
-.board-8843f1f0b16c {
+.CarrousellBackGround {
     width: 100vw;
     height: 142px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%,rgba(0, 0, 0, 0) 100%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 100%);
     border-radius: 0px 0px 0px 0px;
     display: flex;
     align-items: center;
@@ -134,7 +135,7 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    transform: translate(0px,0px);
+    transform: translate(0px, 0px);
 }
 
 .basebackg-8843f1f0b169 {
@@ -151,7 +152,7 @@ body {
 .BlockSelector {
     width: 100vw;
     height: 465px;
-    overflow:scroll;
+    overflow: scroll;
 }
 
 /* Board */
@@ -186,7 +187,7 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    transform: translate(0px,0px);
+    transform: translate(0px, 0px);
 }
 
 .MenuBlockText {
@@ -196,52 +197,63 @@ body {
     flex-shrink: 0;
 }
 
-    .MenuBlockText .root-0 {
-        display: flex;
-        white-space: break-spaces;
-        align-items: flex-start;
-    }
+.MenuBlockText .root-0 {
+    display: flex;
+    white-space: break-spaces;
+    align-items: flex-start;
+}
 
-    .MenuBlockText .root-0-paragraph-set-0 {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: inherit;
-        margin-right: 1px;
-        vertical-align: top;
-    }
+.MenuBlockText .root-0-paragraph-set-0 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: inherit;
+    margin-right: 1px;
+    vertical-align: top;
+}
 
-    .MenuBlockText .root-0-paragraph-set-0-paragraph-0 {
-        font-size: 0;
-        line-height: 1.2;
-        margin: 0;
-        text-align: center;
-    }
+.MenuBlockText .root-0-paragraph-set-0-paragraph-0 {
+    font-size: 0;
+    line-height: 1.2;
+    margin: 0;
+    text-align: center;
+}
 
-    .MenuBlockText .root-0-paragraph-set-0-paragraph-0-text-0 {
-        color: rgba(255, 255, 255, 1);
-        text-transform: none;
-        line-break: auto;
-        overflow-wrap: initial;
-        white-space: pre;
-        text-rendering: geometricPrecision;
-        caret-color: rgba(255, 255, 255, 1);
-        text-decoration: none;
-        letter-spacing: 0px;
-        font-size: 20px;
-        font-family: "sourcesanspro";
-        font-style: normal;
-        font-weight: 400;
-    }
+.MenuBlockText .root-0-paragraph-set-0-paragraph-0-text-0 {
+    color: rgba(255, 255, 255, 1);
+    text-transform: none;
+    line-break: auto;
+    overflow-wrap: initial;
+    white-space: pre;
+    text-rendering: geometricPrecision;
+    caret-color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    letter-spacing: 0px;
+    font-size: 20px;
+    font-family: "sourcesanspro";
+    font-style: normal;
+    font-weight: 400;
+}
 
 /* Block */
-.Block {
+.MenuBlock {
     border-radius: 0px;
     flex-shrink: 0;
+    background-size:64px;
+    width: 64px;
+    height: 64px;
     image-rendering: pixelated;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.CarrousellBlock {
+    border-radius: 0px;
+    flex-shrink: 0;
+    image-rendering: pixelated;
+    width: 64px;
+    height: 64px;
+    background-size: 64px;
 }
 
 /* Rectangle */
@@ -254,12 +266,12 @@ body {
     border: none;
     color: rgba(237, 229, 226, 1);
     font-family: "Noto Sans";
-    font-size:22px;
+    font-size: 22px;
 }
 
 /* Rectangle */
 .searchMenuHeader {
-    position:absolute;
+    position: absolute;
     width: 100vw;
     height: 65px;
     background: #3D3938;
@@ -267,7 +279,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index:5;
+    z-index: 5;
 }
 
 /* Board */
@@ -288,43 +300,43 @@ body {
     height: 49px;
 }
 
-    .grid-mode-8843f1f0b161 .root-0 {
-        display: flex;
-        white-space: break-spaces;
-        align-items: flex-start;
-    }
+.grid-mode-8843f1f0b161 .root-0 {
+    display: flex;
+    white-space: break-spaces;
+    align-items: flex-start;
+}
 
-    .grid-mode-8843f1f0b161 .root-0-paragraph-set-0 {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: inherit;
-        min-width: 100%;
-        margin-right: 1px;
-        vertical-align: top;
-    }
+.grid-mode-8843f1f0b161 .root-0-paragraph-set-0 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: inherit;
+    min-width: 100%;
+    margin-right: 1px;
+    vertical-align: top;
+}
 
-    .grid-mode-8843f1f0b161 .root-0-paragraph-set-0-paragraph-0 {
-        font-size: 0;
-        line-height: 1.2;
-        margin: 0;
-        text-align: left;
-    }
+.grid-mode-8843f1f0b161 .root-0-paragraph-set-0-paragraph-0 {
+    font-size: 0;
+    line-height: 1.2;
+    margin: 0;
+    text-align: left;
+}
 
-    .grid-mode-8843f1f0b161 .root-0-paragraph-set-0-paragraph-0-text-0 {
-        color: rgba(100, 100, 100, 1);
-        text-transform: none;
-        line-break: auto;
-        overflow-wrap: initial;
-        white-space: break-spaces;
-        text-rendering: geometricPrecision;
-        caret-color: rgba(100, 100, 100, 1);
-        text-decoration: none;
-        letter-spacing: 0px;
-        font-size: 45px;
-        font-family: "Noto Sans";
-        font-style: normal;
-        font-weight: 400;
-    }
+.grid-mode-8843f1f0b161 .root-0-paragraph-set-0-paragraph-0-text-0 {
+    color: rgba(100, 100, 100, 1);
+    text-transform: none;
+    line-break: auto;
+    overflow-wrap: initial;
+    white-space: break-spaces;
+    text-rendering: geometricPrecision;
+    caret-color: rgba(100, 100, 100, 1);
+    text-decoration: none;
+    letter-spacing: 0px;
+    font-size: 45px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+}
 
 /* Row Mode */
 .row-mode-8843f1f0b160 {
@@ -335,43 +347,43 @@ body {
     height: 49px;
 }
 
-    .row-mode-8843f1f0b160 .root-0 {
-        display: flex;
-        white-space: break-spaces;
-        align-items: flex-start;
-    }
+.row-mode-8843f1f0b160 .root-0 {
+    display: flex;
+    white-space: break-spaces;
+    align-items: flex-start;
+}
 
-    .row-mode-8843f1f0b160 .root-0-paragraph-set-0 {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: inherit;
-        min-width: 100%;
-        margin-right: 1px;
-        vertical-align: top;
-    }
+.row-mode-8843f1f0b160 .root-0-paragraph-set-0 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: inherit;
+    min-width: 100%;
+    margin-right: 1px;
+    vertical-align: top;
+}
 
-    .row-mode-8843f1f0b160 .root-0-paragraph-set-0-paragraph-0 {
-        font-size: 0;
-        line-height: 1.2;
-        margin: 0;
-        text-align: left;
-    }
+.row-mode-8843f1f0b160 .root-0-paragraph-set-0-paragraph-0 {
+    font-size: 0;
+    line-height: 1.2;
+    margin: 0;
+    text-align: left;
+}
 
-    .row-mode-8843f1f0b160 .root-0-paragraph-set-0-paragraph-0-text-0 {
-        color: rgba(48, 211, 79, 1);
-        text-transform: none;
-        line-break: auto;
-        overflow-wrap: initial;
-        white-space: break-spaces;
-        text-rendering: geometricPrecision;
-        caret-color: rgba(48, 211, 79, 1);
-        text-decoration: none;
-        letter-spacing: 0px;
-        font-size: 45px;
-        font-family: "Noto Sans";
-        font-style: normal;
-        font-weight: 400;
-    }
+.row-mode-8843f1f0b160 .root-0-paragraph-set-0-paragraph-0-text-0 {
+    color: rgba(48, 211, 79, 1);
+    text-transform: none;
+    line-break: auto;
+    overflow-wrap: initial;
+    white-space: break-spaces;
+    text-rendering: geometricPrecision;
+    caret-color: rgba(48, 211, 79, 1);
+    text-decoration: none;
+    letter-spacing: 0px;
+    font-size: 45px;
+    font-family: "Noto Sans";
+    font-style: normal;
+    font-weight: 400;
+}
 
 
 /* Rectangle */
@@ -384,11 +396,11 @@ body {
 
 .headerButtonRowMode {
     color: #30d34f;
-    background: linear-gradient(to bottom, rgba(48, 211, 79, 0.3) 0%,rgba(110, 198, 121, 0) 100%);
+    background: linear-gradient(to bottom, rgba(48, 211, 79, 0.3) 0%, rgba(110, 198, 121, 0) 100%);
 }
 .headerButtonGridMode {
     color: #a300c34d;
-    background: linear-gradient(to bottom, rgba(163, 0, 195, 0.3) 0%,rgba(110, 198, 121, 0) 100%);
+    background: linear-gradient(to bottom, rgba(163, 0, 195, 0.3) 0%, rgba(110, 198, 121, 0) 100%);
 }
 .headerButton {
     display: flex;
